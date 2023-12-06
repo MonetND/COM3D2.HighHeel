@@ -15,7 +15,7 @@ namespace COM3D2.HighHeel
     {
         public const string PluginGuid = "com.habeebweeb.com3d2.highheel";
         public const string PluginName = "COM3D2.HighHeel";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.1";
         public const string PluginString = PluginName + " " + PluginVersion;
 
         private const string ConfigName = "Configuration.cfg";
