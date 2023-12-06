@@ -2,6 +2,11 @@ using System;
 using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
+using BepInEx;
+using System.IO;
+using Newtonsoft.Json; 
+using UnityEngine.SceneManagement;
+
 
 namespace COM3D2.HighHeel.Core
 {
@@ -61,7 +66,7 @@ namespace COM3D2.HighHeel.Core
             }
 
             // Fetch and parse configuration files
-            string offset_path = Path.Combine(Paths.ConfigPath, PluginName)  + 'Bodyoffset.json';
+            string offset_path = Path.Combine(Paths.ConfigPath, PluginName)  + "Bodyoffset.json";
             string offset_Text = File.ReadAllText(offset_path);
 
             // Parse JSON files
