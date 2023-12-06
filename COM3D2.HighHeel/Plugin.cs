@@ -131,7 +131,7 @@ namespace COM3D2.HighHeel
         }
 
 
-        private BodyOffsetConfig LoadBodyOffsetConfig()
+        public BodyOffsetConfig LoadBodyOffsetConfig()
         {
             string offsetConfigPath = Path.Combine(ConfigPath, "Bodyoffset.json");
 
