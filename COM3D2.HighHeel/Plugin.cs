@@ -37,6 +37,10 @@ namespace COM3D2.HighHeel
 
         public Plugin()
         {
+            //#109 Hack
+            var bodyOffsetConfig = LoadBodyOffsetConfig();
+            //#109 Hack
+
             try
             {
                 Harmony.CreateAndPatchAll(typeof(Core.Hooks));
@@ -114,6 +118,35 @@ namespace COM3D2.HighHeel
 
             return database;
         }
+
+
+
+        //#109 Hack
+        private BodyOffsetConfig LoadBodyOffsetConfig()
+        {
+            string offsetConfigPath = Path.Combine(ConfigPath, "Bodyoffset.json");
+
+            if (!File.Exists(offsetConfigPath))
+            {
+                Logger.LogWarning("Bodyoffset.json not found!");
+                return new BodyOffsetConfig(); // return empty
+            }
+
+            try
+            {
+                string configJson = File.ReadAllText(offsetConfigPath);
+                return JsonConvert.DeserializeObject<BodyOffsetConfig>(configJson);
+            }
+            catch (Exception e)
+            {
+                Logger.LogWarning($"Error loading Bodyoffset.json: {e.Message}");
+                return new BodyOffsetConfig(); // return empty
+            }
+        }
+        //#109 Hack
+
+
+
 
         private static void ExportConfiguration(Core.ShoeConfig config, string filename)
         {
