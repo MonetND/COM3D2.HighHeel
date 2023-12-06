@@ -38,7 +38,7 @@ namespace COM3D2.HighHeel
         public Plugin()
         {
             //#109 Hack
-            var bodyOffsetConfig = LoadBodyOffsetConfig();
+            public var bodyOffsetConfig = LoadBodyOffsetConfig();
             //#109 Hack
 
             try
