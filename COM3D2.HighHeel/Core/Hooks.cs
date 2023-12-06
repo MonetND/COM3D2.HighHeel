@@ -92,11 +92,11 @@ namespace COM3D2.HighHeel.Core
             */
 
             int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            if (currentSceneIndex == 14 or 10)
+            if (currentSceneIndex == 14 || currentSceneIndex == 10)
             {
                 offset = 0.00f;
             }
-            else if (sceneIndex == 65)
+            else if (currentSceneIndex == 65)
             {
                 offset = 0.06f;
             }
