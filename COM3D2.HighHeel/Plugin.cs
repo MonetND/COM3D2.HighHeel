@@ -122,6 +122,18 @@ namespace COM3D2.HighHeel
 
 
         //#109 Hack
+        public class SceneOffsetConfig
+        {
+            public int sceneIndex { get; set; }
+            public float offsetValue { get; set; }
+        }
+
+        public class BodyOffsetConfig
+        {
+            public List<SceneOffsetConfig> sceneOffsets { get; set; }
+        }
+
+
         private BodyOffsetConfig LoadBodyOffsetConfig()
         {
             string offsetConfigPath = Path.Combine(ConfigPath, "Bodyoffset.json");
