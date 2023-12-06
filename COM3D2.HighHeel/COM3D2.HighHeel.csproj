@@ -42,7 +42,7 @@
       <Reference Include="0Harmony, Culture=neutral, PublicKeyToken=null">
         <HintPath>..\lib\0Harmony.dll</HintPath>
       </Reference>
-      <Reference Include="Assembly-CSharp Culture=neutral, PublicKeyToken=null">
+      <Reference Include="Assembly-CSharp, Culture=neutral, PublicKeyToken=null">
         <HintPath>..\lib\Assembly-CSharp.dll</HintPath>
       </Reference>
       <Reference Include="BepInEx, Culture=neutral, PublicKeyToken=null">
