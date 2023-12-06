@@ -63,6 +63,20 @@
       </PackageReference>
     </ItemGroup>
 	
+	<ItemGroup>
+    <Compile Include="Plugin.cs" />
+    <Compile Include="PluginConfig.cs" />
+    <Compile Include="Core\Hooks.cs" />
+    <Compile Include="Core\MaidTransforms.cs" />
+    <Compile Include="Core\ShoeConfig.cs" />
+    <Compile Include="Core\ShoeTransforms.cs" />
+    <Compile Include="Core\Utility.cs" />
+    <Compile Include="UI\MainWindow.cs" />
+    <Compile Include="UI\NumberInput.cs" />
+    <Compile Include="UI\NumberInputEventArgs.cs" />
+    <Compile Include="UI\TextInputEventArgs.cs" />
+    </ItemGroup>
+	
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 	
 </Project>
