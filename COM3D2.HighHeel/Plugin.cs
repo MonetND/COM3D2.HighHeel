@@ -36,7 +36,7 @@ namespace COM3D2.HighHeel
         public static Plugin? Instance { get; private set; }
 
         //#109 Hack
-        public Dictionary<int, float> SceneOffsets { get; private set; }
+        //public Dictionary<int, float> SceneOffsets { get; private set; }
         //#109 Hack
 
         public Plugin()
@@ -78,7 +78,7 @@ namespace COM3D2.HighHeel
 
 
             //#109 Hack
-            LoadSceneOffsets();
+            //LoadSceneOffsets();
             //#109 Hack
         }
 
@@ -128,6 +128,7 @@ namespace COM3D2.HighHeel
 
 
         //#109 Hack
+        /*
         private void LoadSceneOffsets()
             {
                 string offsetConfigPath = Path.Combine(ConfigPath, "Bodyoffset.json");
@@ -159,7 +160,7 @@ namespace COM3D2.HighHeel
                     Logger.LogWarning("Bodyoffset.json not found.");
                 }
             }
-        
+        */
         //#109 Hack
 
 
