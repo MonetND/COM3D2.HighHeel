@@ -10,21 +10,6 @@ using UnityEngine.SceneManagement;
 
 namespace COM3D2.HighHeel.Core
 {
-    //#109 Hack
-    public class SceneOffsetConfig
-    {
-        public int sceneIndex { get; set; }
-        public float offsetValue { get; set; }
-    }
-
-    public class BodyOffsetConfig
-    {
-        public List<SceneOffsetConfig> sceneOffsets { get; set; }
-    }
-    //#109 Hack
-
-
-
     public static class Hooks
     {
         private static readonly float[] ToeX = { 15f, -5f, -5f };
