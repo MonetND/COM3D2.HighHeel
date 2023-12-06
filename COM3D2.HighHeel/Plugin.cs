@@ -159,7 +159,7 @@ namespace COM3D2.HighHeel
                     Logger.LogWarning("Bodyoffset.json not found.");
                 }
             }
-        }
+        
         //#109 Hack
 
 

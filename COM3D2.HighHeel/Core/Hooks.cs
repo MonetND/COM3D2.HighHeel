@@ -86,7 +86,7 @@ namespace COM3D2.HighHeel.Core
             if (Plugin.Instance != null && Plugin.Instance.SceneOffsets != null && Plugin.Instance.SceneOffsets.ContainsKey(currentSceneIndex))
             {
                 var offsetValue = Plugin.Instance.SceneOffsets[currentSceneIndex];
-                offset = offsetValue
+                offset = offsetValue;
             }
             //#109 Hack
 
