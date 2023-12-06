@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using HarmonyLib;
 using UnityEngine;
@@ -45,7 +45,32 @@ namespace COM3D2.HighHeel.Core
             }
 
             ShoeConfigs[__instance.body] = configName;
+        
+
+
+            //#109 Hack
+            // Create a class to deserialize configuration in JSON
+            public class SceneOffsetConfig
+            {
+                public List<SceneOffset> sceneOffsets { get; set; }
+            }
+
+            public class SceneOffset
+            {
+                public int sceneIndex { get; set; }
+                public float offsetValue { get; set; }
+            }
+
+            // Fetch and parse configuration files
+            string offset_path = Path.Combine(Paths.ConfigPath, PluginName)  + 'Bodyoffset.json';
+            string offset_Text = File.ReadAllText(offset_path);
+
+            // Parse JSON files
+            SceneOffsetConfig config = JsonConvert.DeserializeObject<SceneOffsetConfig>(jsonText);
+
+            //#109 Hack
         }
+
 
         [HarmonyPostfix, HarmonyPatch(typeof(TBody), "LateUpdate")]
         public static void LateUpdate(TBody __instance)
@@ -73,6 +98,20 @@ namespace COM3D2.HighHeel.Core
 
             var (body, footL, toesL, footR, toesR) = transforms;
             var (offset, footLAngle, footLMax, toeLAngle, footRAngle, footRMax, toeRAngle) = config;
+
+            //#109 Hack
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
+            // Find the corresponding sceneIndex in the configuration and set the corresponding offset
+            foreach (var sceneOffset in config.sceneOffsets)
+            {
+                if (sceneOffset.sceneIndex == currentSceneIndex)
+                {
+                    offset = sceneOffset.offsetValue;
+                    break;
+                }
+            }
+            //#109 Hack
 
             body.Translate(Vector3.up * offset, Space.World);
 
