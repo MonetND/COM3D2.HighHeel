@@ -81,7 +81,7 @@ namespace COM3D2.HighHeel.Core
             var (offset, footLAngle, footLMax, toeLAngle, footRAngle, footRMax, toeRAngle) = config;
 
             //#109 Hack
-            var bodyOffsetConfig = LoadBodyOffsetConfig();
+            var bodyOffsetConfig = Plugin.LoadBodyOffsetConfig();
 
             if (bodyOffsetConfig != null)
             {
