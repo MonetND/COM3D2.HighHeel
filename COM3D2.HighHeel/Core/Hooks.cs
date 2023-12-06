@@ -81,22 +81,12 @@ namespace COM3D2.HighHeel.Core
             var (offset, footLAngle, footLMax, toeLAngle, footRAngle, footRMax, toeRAngle) = config;
 
             //#109 Hack
-            var bodyOffsetConfig = Plugin.LoadBodyOffsetConfig();
-            //#109 Hack
+            int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
 
-            //#109 Hack
-            if (bodyOffsetConfig != null)
+            if (Plugin.Instance != null && Plugin.Instance.SceneOffsets != null && Plugin.Instance.SceneOffsets.ContainsKey(currentSceneIndex))
             {
-                int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-
-                foreach (var sceneOffset in bodyOffsetConfig.sceneOffsets)
-                {
-                    if (sceneOffset.sceneIndex == currentSceneIndex)
-                    {
-                        offset = sceneOffset.offsetValue;
-                        break;
-                    }
-                }
+                var offsetValue = Plugin.Instance.SceneOffsets[currentSceneIndex];
+                offset = offsetValue
             }
             //#109 Hack
 

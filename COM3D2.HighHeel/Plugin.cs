@@ -35,6 +35,10 @@ namespace COM3D2.HighHeel
 
         public static Plugin? Instance { get; private set; }
 
+        //#109 Hack
+        public Dictionary<int, float> SceneOffsets { get; private set; }
+        //#109 Hack
+
         public Plugin()
         {
 
@@ -71,6 +75,11 @@ namespace COM3D2.HighHeel
 
             ImportConfiguration(ref EditModeConfig, "");
             mainWindow.UpdateEditModeValues();
+
+
+            //#109 Hack
+            LoadSceneOffsets();
+            //#109 Hack
         }
 
         private void Update()
@@ -119,37 +128,36 @@ namespace COM3D2.HighHeel
 
 
         //#109 Hack
-        public class SceneOffsetConfig
-        {
-            public int sceneIndex { get; set; }
-            public float offsetValue { get; set; }
-        }
-
-        public class BodyOffsetConfig
-        {
-            public List<SceneOffsetConfig> sceneOffsets { get; set; }
-        }
-
-
-        public BodyOffsetConfig LoadBodyOffsetConfig()
-        {
-            string offsetConfigPath = Path.Combine(ConfigPath, "Bodyoffset.json");
-
-            if (!File.Exists(offsetConfigPath))
+        private void LoadSceneOffsets()
             {
-                Logger.LogWarning("Bodyoffset.json not found!");
-                return new BodyOffsetConfig(); // return empty
-            }
+                string offsetConfigPath = Path.Combine(ConfigPath, "Bodyoffset.json");
 
-            try
-            {
-                string configJson = File.ReadAllText(offsetConfigPath);
-                return JsonConvert.DeserializeObject<BodyOffsetConfig>(configJson);
-            }
-            catch (Exception e)
-            {
-                Logger.LogWarning($"Error loading Bodyoffset.json: {e.Message}");
-                return new BodyOffsetConfig(); // return empty
+                if (File.Exists(offsetConfigPath))
+                {
+                    try
+                    {
+                        string jsonText = File.ReadAllText(offsetConfigPath);
+                        var sceneOffsets = JsonConvert.DeserializeObject<Dictionary<string, float>>(jsonText);
+
+                        SceneOffsets = new Dictionary<int, float>();
+
+                        foreach (var sceneOffset in sceneOffsets)
+                        {
+                            if (int.TryParse(sceneOffset.Key, out int sceneIndex))
+                            {
+                                SceneOffsets[sceneIndex] = sceneOffset.Value;
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.LogError($"Error loading scene offsets: {e.Message}");
+                    }
+                }
+                else
+                {
+                    Logger.LogWarning("Bodyoffset.json not found.");
+                }
             }
         }
         //#109 Hack
