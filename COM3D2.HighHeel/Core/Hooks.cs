@@ -10,20 +10,16 @@ using UnityEngine.SceneManagement;
 
 namespace COM3D2.HighHeel.Core
 {
-
     //#109 Hack
-    namespace COM3D2.HighHeel.Core
+    public class SceneOffsetConfig
     {
-        public class SceneOffsetConfig
-        {
-            public int sceneIndex { get; set; }
-            public float offsetValue { get; set; }
-        }
+        public int sceneIndex { get; set; }
+        public float offsetValue { get; set; }
+    }
 
-        public class BodyOffsetConfig
-        {
-            public List<SceneOffsetConfig> sceneOffsets { get; set; }
-        }
+    public class BodyOffsetConfig
+    {
+        public List<SceneOffsetConfig> sceneOffsets { get; set; }
     }
     //#109 Hack
 
