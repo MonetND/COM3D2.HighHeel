@@ -47,7 +47,6 @@ namespace COM3D2.HighHeel.Core
             ShoeConfigs[__instance.body] = configName;
         
 
-
             //#109 Hack
             // Create a class to deserialize configuration in JSON
             public class SceneOffsetConfig
@@ -66,7 +65,7 @@ namespace COM3D2.HighHeel.Core
             string offset_Text = File.ReadAllText(offset_path);
 
             // Parse JSON files
-            SceneOffsetConfig config = JsonConvert.DeserializeObject<SceneOffsetConfig>(jsonText);
+            SceneOffsetConfig config = JsonConvert.DeserializeObject<SceneOffsetConfig>(offset_Text);
 
             //#109 Hack
         }
