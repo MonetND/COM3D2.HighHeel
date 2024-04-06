@@ -49,7 +49,7 @@ namespace COM3D2.HighHeel.Core
                 return;
             }
 
-            ShoeConfigs[__instance.body] = configName;
+            ShoeConfigs[__instance.body] = configName1;
         }
 
 
